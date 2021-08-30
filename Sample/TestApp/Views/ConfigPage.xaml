@@ -1,0 +1,189 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:TestApp.ViewModels"
+             x:Class="TestApp.Views.ConfigPage"
+             Title = "Settings">
+
+    <ContentPage.BindingContext>
+        <local:ConfigViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid Padding="20"
+          RowSpacing="2"
+          ColumnSpacing="2"
+          BackgroundColor="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="1"
+               Text="Public Token"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="0"
+               x:Name="tokenEntryBox"
+               Text= "{Binding Token}"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Column="1"
+               Grid.Row="1"
+               Text="Timeout (seconds)"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="1"
+               Text="{Binding TimeOut}"
+               x:Name="timeoutEntryBox"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Column="1"
+               Grid.Row="2"
+               Text="Payment Amount"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="2"
+               Text="{Binding Total}"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalTextAlignment="Center"
+               x:Name="totalEntryBox"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Column="1"
+               Grid.Row="3"
+               Text="Theme"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Picker x:Name="PickerTheme"
+                Grid.Column="2"
+                Grid.Row="3"
+                Title="Theme"
+                TitleColor="Black"
+                TextColor="Black"
+                BackgroundColor="White"
+                FontSize="Medium"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                SelectedItem="{Binding SelectedTheme}"
+                ItemsSource="{Binding GetListTheme}">
+        </Picker>
+        <Label Grid.Column="1"
+               Grid.Row="4"
+               Text="Environment"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Picker x:Name="PickerEnviroment"
+                Grid.Column="2"
+                Grid.Row="4"
+                Title="Environment"
+                TitleColor="Black"
+                BackgroundColor="White"
+                TextColor="Black"
+                FontSize="Medium"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="End"
+                SelectedItem="{Binding SelectedEnviroment}"
+                ItemsSource="{Binding GetListEnviroment}">
+        </Picker>
+        <Label Grid.Column="1"
+               Grid.Row="5"
+               Text="Subtotal"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="5"
+               Text="{Binding SubTotal}"
+               TextColor="Black"
+               FontSize="Medium"
+               x:Name="subTotalEntryBox"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Column="1"
+               Grid.Row="6"
+               Text="Tax"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="6"
+               Text="{Binding Tax}"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalTextAlignment="Center"
+               x:Name="taxEntryBox"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Column="1"
+               Grid.Row="7"
+               Text="Metadata1"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="7"
+               Text="{Binding Metadata1}"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalTextAlignment="Center"
+               x:Name="metadata1EntryBox"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Column="1"
+               Grid.Row="8"
+               Text="Metadata2"
+               FontSize="Medium"
+               TextColor="Black"
+               VerticalTextAlignment="Center"/>
+        <Label Grid.Column="2"
+               Grid.Row="8"
+               Text="{Binding Metadata2}"
+               TextColor="Black"
+               FontSize="Medium"
+               VerticalTextAlignment="Center"
+               x:Name="metadata2EntryBox"
+               HorizontalTextAlignment="End"
+               TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClickToken" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Grid>
+</ContentPage>

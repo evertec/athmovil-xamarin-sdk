@@ -1,0 +1,148 @@
+﻿<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TestApp.Views.ReviewPage"
+    xmlns:vm="clr-namespace:TestApp.ViewModels"
+    xmlns:btn1="clr-namespace:ATHMovil.Purchase.UI;assembly=ATHMovil.PurchaseSDK"
+    Title="PAYMENT INFO"
+    BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:ReviewViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="White"
+            VerticalOptions="Start"
+            Orientation="Vertical"
+            Margin="30,0,30,0">
+            <Grid BackgroundColor="White">
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Text="Token"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="0"
+                       x:Name="token"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       Text="TimeOut"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       x:Name="timeout"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       Text="Subtotal"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="2"
+                       x:Name="subtotal"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       Text="Tax"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="3"
+                       x:Name="tax"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="4"
+                       Text="Total"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="4"
+                       x:Name="total"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="5"
+                       Text="Metadata1"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="5"
+                       x:Name="metadata1"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="6"
+                       Text="Metadata2"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="6"
+                       x:Name="metadata2"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="0"
+                       Grid.Row="7"
+                       Text="Items"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1"
+                       Grid.Row="7"
+                       x:Name="items"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"/>
+                <Label Grid.Column="1"
+                       Grid.Row="8"
+                       TextColor="Black"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="End"
+                       HeightRequest="100"/>
+            </Grid>
+            <btn1:ATHMButton
+                x:Name="PaymentButton"
+                Margin="0,0,0,30"
+                VerticalOptions="End"
+                Command="{Binding OnPayATHMovil}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
