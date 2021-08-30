@@ -1,22 +1,10 @@
 
-/Src/ATHMovil.PurchaseSDK.Android/bin
-/Src/ATHMovil.PurchaseSDK.Android/obj
-
-/Src/ATHMovil.PurchaseSDK.iOS/bin
-/Src/ATHMovil.PurchaseSDK.iOS/obj
-
-/Src/ATHMovil.PurchaseSDK.NuGet/bin
-/Src/ATHMovil.PurchaseSDK.NuGet/obj
-
-/Src/ATHMovil.PurchaseSDK.NuGet/bin
-/Src/ATHMovil.PurchaseSDK.NuGet/obj
-
-/Sample/Packages/
-
 Source/ATHMovil.PurchaseSDK/obj/
 Source/ATHMovil.PurchaseSDK/bin/
 
 
+/Sample/.vs/
+/Sample/Packages/
 /Sample/TestApp/bin
 /Sample/TestApp/obj
 
