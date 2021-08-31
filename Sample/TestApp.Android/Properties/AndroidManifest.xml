@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.testapp">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+	<application android:label="TestApp.Android" android:theme="@style/MainTheme">
+		<activity android:name="com.companyname.testapp.ResponseActivity">
+			<intent-filter>
+				<action android:name="com.companyname.testapp.test-app" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+	</application>
+	<!--Tag query is for Android X, it is needed for this Android version-->
+	<queries>
+		<package android:name="com.evertec.athmovil.android.qa" />
+		<package android:name="com.evertec.athmovil.android.piloto" />
+		<package android:name="com.evertec.athmovil.android" />
+	</queries>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>
