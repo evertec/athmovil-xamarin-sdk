@@ -13,7 +13,7 @@
 		<PackageTags></PackageTags>
 		<Title>Plugin for Xamarin and Windows</Title>
 		<Description></Description>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReadmeFile></PackageReadmeFile>
 
 		<AssemblyName>ATHMovil.PurchaseSDK</AssemblyName>
 		<AssemblyVersion>1.0.0</AssemblyVersion>
@@ -56,8 +56,7 @@
 		<Compile Include="Shared\UI\**\*.cs" />
 		<Compile Include="Shared\Utils\**\*.cs" />
 		<None Include="Platforms\**\*.cs" />
-		<None Include="README.md" Pack="true" PackagePath="\"/>
-		<None Include="paymentux.png" Pack="true" PackagePath="\"/>
+		
 	</ItemGroup>
 
 
