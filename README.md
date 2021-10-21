@@ -13,17 +13,20 @@ Before you begin, please review the following prerequisites:
 
 
 ## Support
-If you need help signing up, adding a card or have any other question please refer to <a href=https://athmovilbusiness.com/preguntas>questions<a/> or contact our support team at (787) 773-5466. For technical support please complete the following <a href=https://forms.gle/ZSeL8DtxVNP2K2iDA>form<a/>.
+If you need help signing up, adding a card or have any other question please refer to <a href=https://athmovilbusiness.com/preguntas>questions</a> or contact our support team at (787) 773-5466. For technical support please complete the following <a href=https://forms.gle/ZSeL8DtxVNP2K2iDA>form</a>.
 
 
 ## Installation
 
-ATH Movil SDK works for Android and iOS so you can add it through Manager NuGet Package. Follow the next instructions
+ATH Movil SDK works for Android and iOS so you can add it to your project as local Package Sources. This repository containts the compiled package so avoid compile the project. In order to do that you should follow the next steps:
 
-* On the menu bar go to Manage Nuget Package
-* On the tab Browser look for ATH Movil SDK
-* On the result select ATH Movil SDK and don't forget select latest version
-* Press the button Add Package 
+* Into the repository find the file named **ATHMovil.PurchaseSDK.1.0.0.nupkg** this file containts the compiled package of ATH Movil SKD. Download the file **ATHMovil.PurchaseSDK.1.0.0.nupkg**.
+* Open your project and navigate to Visual Studio > Preferences > NuGet > Sources, this option will show you the remote and local packages that are configured in your computer.
+* Then click add button, the next window will required some information such as name, for the name you might set **ATHMovil SDK**, for the Location select the location of the file **ATHMovil.PurchaseSDK.1.0.0.nupkg**. After this the local source package has been configured and imported to Visual Studio.
+* Now you should add the ATH Movil Package to your project as dependencie, in order to do that, in your project right click on dependencies and select Manage NutGet Packages, in the next window look for the option Package Source and select ATHMovil SDK, then you will see the package **ATHMovil.PurchaseSDK**.
+* Select the option latest version and press the button Add Package.
+* Now you must see the references of ATH Movil SDK in your project, it should be configured for Android or iOS then you can move to the next section Configuration.
+* If you have more questions about how to configure the local source you can get more detail in this links <a href="https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio?view=vsmac-2019#package-sources">for Windows Local Package</a> and <a href="https://docs.microsoft.com/en-us/visualstudio/mac/nuget-walkthrough?toc=%2Fnuget%2Ftoc.json&view=vsmac-2019#adding-package-sources">for Mac Adding Package Source</a>.
 
 ## Configuration
 
