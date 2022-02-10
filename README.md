@@ -292,7 +292,7 @@ For items properties there is a class named PurchaseItem, you can use it to fill
   | `Price` | double | Yes | Price of individual item. |
   | `Quantity` | int | Yes | Quantity of individual item. |
   | `Description` | string | No | Brief description of the item. |
-  | `Metadata` | string | No | Optional variable to attach data to the item object. |
+  | `Metadata` | string | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
   
   
 As you notice in the PurchaseHandler you set a methods of your view model. Those methods are receiving a parameter of  PurchaseResponse type. The following table describe the properties for this object.
