@@ -278,8 +278,8 @@ The following optional properties can be used to add additional information to t
   | ------------- |:-------------:|:-----:| ------------- |
   | `Subtotal` | double | No | Optional  variable to display the payment subtotal (if applicable) |
   | `Tax` | double | No | Optional variable to display the payment tax (if applicable). |
-  | `Metadata1` | string | Yes | Optional variable to attach data to the payment object. Max length 40 characters. |
-  | `Metadata2` | string | Yes | Optional variable to attach data to the payment object. Max length 40 characters. |
+  | `Metadata1` | string | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
+  | `Metadata2` | string | Yes | Required variable that can be left empty or filled with additional transaction information. Max length 40 characters. |
   | `Items` | List<PurchaseItem> | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
 
 **Items Array**
