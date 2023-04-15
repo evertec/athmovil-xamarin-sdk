@@ -31,7 +31,7 @@ namespace ATHMovil.Purchase.Openers
         {
             string bodyJSON = Encoder.Encode(request);
 
-            string fullPath = target.GetTargetUniversalLink() + GetPathPaymentType(request.Business);
+            string fullPath = target.GetTargetURLScheme() + GetPathPaymentType(request.Business);
             NSUrlComponents components = new NSUrlComponents(fullPath);
             components.QueryItems = new NSUrlQueryItem[1] { new NSUrlQueryItem(Opener.ParameterJSONName, bodyJSON) };
 
@@ -48,7 +48,7 @@ namespace ATHMovil.Purchase.Openers
         private void OpenATHMovil(NSUrl url)
         {
             UIApplicationOpenUrlOptions options = new UIApplicationOpenUrlOptions();
-            options.UniversalLinksOnly = true;
+            options.UniversalLinksOnly = false;
 
             UIApplication.SharedApplication.OpenUrl(url, options, OpenAppStore);
         }
@@ -92,6 +92,11 @@ namespace ATHMovil.Purchase.Openers
         internal static string GetTargetUniversalLink(this ATHMovilTarget target)
         {
             return "https://athm-ulink-prod-static-website.s3.amazonaws.com/e-commerce/";
+        }
+
+        internal static string GetTargetURLScheme(this ATHMovilTarget target)
+        {
+            return "athm://payment/";
         }
     }
 }

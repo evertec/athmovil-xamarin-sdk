@@ -1,0 +1,20 @@
+name: Pack ATHMovil.PurchaseSDK
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: msbuild Source/**/*.csproj /t:restore,rebuild,pack /p:Configuration=Release
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        # A file, directory or wildcard pattern that describes what to upload
+        path: Source/**/*.nupkg
