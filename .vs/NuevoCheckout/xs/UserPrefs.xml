@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{ADBFDC10-0071-43A9-B358-99C5A42C57D5}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ATHMovilPurchaseSDK/ATHMovil.PurchaseSDK/Resources/Internal/Extensions.cs">
+    <Files>
+      <File FileName="ATHMovilPurchaseSDK/ATHMovil.PurchaseSDK/Resources/Internal/Extensions.cs" Line="106" Column="56" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="NuevoCheckout">
+            <Node name="NuevoCheckout" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.NuevoCheckout PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.6FF0FDD4-C794-495E-85B5-4F05F4E3E016" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.6FF0FDD4-C794-495E-85B5-4F05F4E3E016" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>

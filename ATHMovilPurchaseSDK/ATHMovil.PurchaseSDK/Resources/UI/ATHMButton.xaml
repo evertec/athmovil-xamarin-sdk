@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ImageButton
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ui="clr-namespace:ATHMovil.Purchase.UI"
+    x:DataType="ui:ATHMButton"
+    x:Class="ATHMovil.Purchase.UI.ATHMButton"
+    MinimumWidthRequest="200"
+    Padding="25,15,25,15">
+</ImageButton>
