@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 17.0.31611.283
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuevoCheckout", "NuevoCheckout\NuevoCheckout.csproj", "{ADBFDC10-0071-43A9-B358-99C5A42C57D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATHMovil.PurchaseSDK", "ATHMovilPurchaseSDK\ATHMovil.PurchaseSDK\ATHMovil.PurchaseSDK.csproj", "{5023BD0D-D015-4F2D-9899-553B36B2C80E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADBFDC10-0071-43A9-B358-99C5A42C57D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBFDC10-0071-43A9-B358-99C5A42C57D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBFDC10-0071-43A9-B358-99C5A42C57D5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ADBFDC10-0071-43A9-B358-99C5A42C57D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBFDC10-0071-43A9-B358-99C5A42C57D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBFDC10-0071-43A9-B358-99C5A42C57D5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5023BD0D-D015-4F2D-9899-553B36B2C80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5023BD0D-D015-4F2D-9899-553B36B2C80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5023BD0D-D015-4F2D-9899-553B36B2C80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5023BD0D-D015-4F2D-9899-553B36B2C80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal

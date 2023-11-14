@@ -1,0 +1,60 @@
+﻿using System;
+using ATHMovil.Purchase.Storage;
+using ATHMovil.PurchaseSDK.String;
+
+namespace ATHMovil.Purchase.Model
+{
+    public struct Business : ISatisfiable
+    {
+        private string _publicToken { get; set; }
+        public string PublicToken
+        {
+            get => _publicToken;
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    _publicToken = string.Empty;
+                    return;
+                }
+                _publicToken = value.Trim();
+            }
+        }
+
+        internal bool IsDummy
+        {
+            get
+            {
+                if (PublicToken != null && !string.IsNullOrEmpty(PublicToken) && string.Compare(PublicToken, "dummy", StringComparison.CurrentCultureIgnoreCase) == 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public PurchaseException? IsSatisfy
+        {
+            get {
+                
+                if (string.IsNullOrEmpty(PublicToken))
+                {
+                    if (SDKGlobal.Instance().Flow.Equals("Yes")){
+                        return PurchaseException.Request(StringMensaje.GetGenericErrorMessage());
+                    }
+                    else {
+                        return PurchaseException.Request(StringMensaje.GetGenericErrorMessageOldFlow());
+                    }
+                        
+                }
+                return null;
+            }
+        }
+
+        public Business(string publicToken)
+        {
+            _publicToken = string.Empty;
+            PublicToken = publicToken;
+        }
+    }
+}

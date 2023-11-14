@@ -1,0 +1,83 @@
+﻿<ContentPage  
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NuevoCheckout.Views.PopupPageModal"
+    xmlns:vm="clr-namespace:NuevoCheckout.ViewModels"
+    BackgroundColor="Transparent">
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    <Frame
+        BackgroundColor="White"
+        CornerRadius="20"
+        Padding="10"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        WidthRequest="300">
+        <StackLayout
+            Orientation="Vertical"
+            Padding="20">
+            <Entry
+                x:Name="Name"
+                Placeholder="Name"
+                Text="{Binding Name}"
+                TextColor="Black"
+                BackgroundColor="White"
+                PlaceholderColor="Gray"
+                Margin="0,0,0,16">
+            </Entry>
+            <Entry
+                x:Name="Price"
+                Placeholder="Price"
+                Text="{Binding Price}"
+                TextColor="Black"
+                BackgroundColor="White"
+                PlaceholderColor="Gray"
+                Margin="0,0,0,16">
+            </Entry>
+            <Entry
+                x:Name="Description"
+                Placeholder="Description"
+                Text="{Binding Description}"
+                TextColor="Black"
+                BackgroundColor="White"
+                PlaceholderColor="Gray"
+                Margin="0,0,0,16">
+            </Entry>
+            <Entry
+                x:Name="Quantity"
+                Placeholder="Quantity"
+                Text="{Binding Quantity}"
+                TextColor="Black"
+                BackgroundColor="White"
+                PlaceholderColor="Gray"
+                Margin="0,0,0,16">
+            </Entry>
+            <Entry
+                x:Name="Metadata"
+                Placeholder="Metadata"
+                Text="{Binding Metadata}"
+                TextColor="Black"
+                BackgroundColor="White"
+                PlaceholderColor="Gray"
+                Margin="0,0,0,16">
+            </Entry>
+            <StackLayout Orientation="Horizontal"
+                         Padding="10">
+                <Button Text="CANCEL"
+                        Clicked="Button_Clicked"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="End"
+                        Padding="20"
+                        CornerRadius="10">
+                </Button>
+                <Button Text="CONFIRM"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="End"
+                        Command="{Binding AddItem}"
+                        Clicked="Button_Clicked"
+                        Padding="20"
+                        CornerRadius="10">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</ContentPage>
