@@ -4,7 +4,7 @@
 ## Introduction
 ATH Móvil's Payment Button SDK provides a simple, secure and fast checkout experience to customers paying on your iOS/Android application. After integrating our Payment Button on your app you will be able to receive real time payments from more than 1.5 million ATH Móvil users.
 
-
+Disclaimer: The Payment Button ATH Móvil is not compatible with any major Ecommerce platform. This includes Shopify, Wix, Woocommerce or Stripe.
 ## Prerequisites
 Before you begin, please review the following prerequisites:
 1. An active ATH Móvil Business account is required to continue. To sign up, download "ATH Móvil Business" on the App Store or Play Store of your iOS or Android device.
