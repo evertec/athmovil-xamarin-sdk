@@ -269,6 +269,7 @@ OnPayATHMovil = new Command(() =>
 | UriCallBack | Defines the call back for your app, the value should be the Action Name for Android and URL Scheme for iOS. You can define the same value for Action Name and URL Scheme |
 | Purchase | Defines the purchase total, this is the amount that ATH Movil Application will withdraw of the user. |
 | PurchaseHandler | In this object you define the methods or callback, those methods will receive the response object from the payment. You would receive completed, cancelled, failed  or expired payment. If you received OnException means a error in the SDK or invalid input valid |
+| PurchaseRequest | In this object you establish if you want to use the new payment version by a string stating YES or NO |
 
 
 The following optional properties can be used to add additional information to the payment:
