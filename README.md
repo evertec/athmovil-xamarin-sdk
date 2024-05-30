@@ -365,7 +365,7 @@ If unexpected data is sent on the request of the payment the SDK will call the c
     error.IsRequestError ///True if the error is in input data.
 ```
 
-If the new payment flow has been chosen, the Authorization service must be consumed after receiving the successful response from the ATH Personas app. To do the above, you need to implement the following code:
+If the new payment flow has been chosen, the Authorization service must be consumed after receiving the successful response from the ATH Móvil app. To do the above, you need to implement the following code:
 
 ```csharp
 
