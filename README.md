@@ -21,7 +21,7 @@ If you need help signing up, adding a card or have any other question please ref
 ATH Movil SDK works for Android and iOS so you can add it to your project as local Package Sources. This repository containts the compiled package so avoid compile the project. In order to do that you should follow the next steps:
 
 * The new version of the xamarin SDK has been migrated to xamarin maui, which makes use of the net-6.0 libraries for android and ios.
-* Into the repository find the file named **ATHMovil.PurchaseSDK.1.0.0.nupkg** this file containts the compiled package of ATH Movil SKD. Download the file **ATHMovil.PurchaseSDK.1.0.0.nupkg**.
+* Into the repository find the file named **ATHMovil.PurchaseSDK** this file containts the compiled package of ATH Movil SKD. Download the file **ATHMovil.PurchaseSDK**.
 * Open your project and navigate to Visual Studio > Preferences > NuGet > Sources, this option will show you the remote and local packages that are configured in your computer.
 * Then click add button, the next window will required some information such as name, for the name you might set **ATHMovil SDK**, for the Location select the location of the file **ATHMovil.PurchaseSDK.1.0.0.nupkg**. After this the local source package has been configured and imported to Visual Studio.
 * Now you should add the ATH Movil Package to your project as dependencie, in order to do that, in your project right click on dependencies and select Manage NutGet Packages, in the next window look for the option Package Source and select ATHMovil SDK, then you will see the package **ATHMovil.PurchaseSDK**.
