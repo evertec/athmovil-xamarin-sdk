@@ -34,7 +34,7 @@ To complete the payment for testing purposes you need to have:
 For more information related to ATH Móvil and how it works please refer to:[ATH Móvil_Apr2024.pptx](https://github.com/user-attachments/files/16267592/ATH.Movil_Apr2024.pptx)
 
 ## Support
-If you need help signing up, adding a card or have any other question please refer to <a href=https://athmovilbusiness.com/preguntas>questions</a> or contact our support team at (787) 773-5466. For technical support please complete the following <a href=https://forms.gle/ZSeL8DtxVNP2K2iDA>form</a>.
+If you need help signing up, adding a card or have any other question please refer to https://ath.business.com/preguntas. For technical support please complete the following form:  https://ath.business/botondepago.
 
 
 ## Installation
