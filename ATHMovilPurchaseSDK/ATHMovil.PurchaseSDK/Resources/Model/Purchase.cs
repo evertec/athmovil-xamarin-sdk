@@ -106,16 +106,13 @@ namespace ATHMovil.Purchase.Model
             get => _phoneNumber;
             set
             {
-                if (SDKGlobal.Instance().Flow.Equals("Yes")) {
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        _phoneNumber = string.Empty;
-                        return;
-                    }
-                    _phoneNumber = value.Trim();
+                if (string.IsNullOrEmpty(value))
+                {
+                    _phoneNumber = string.Empty;
                     return;
                 }
-                _phoneNumber = string.Empty;
+                _phoneNumber = value.Trim();
+                return;
             }
         }
 
@@ -125,17 +122,13 @@ namespace ATHMovil.Purchase.Model
             get => _ecommerceId;
             set
             {
-                if (SDKGlobal.Instance().Flow.Equals("Yes"))
+                if (string.IsNullOrEmpty(value))
                 {
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        _ecommerceId = string.Empty;
-                        return;
-                    }
-                    _ecommerceId = value.Trim();
+                    _ecommerceId = string.Empty;
                     return;
                 }
-                _ecommerceId = string.Empty;
+                _ecommerceId = value.Trim();
+                return;
             }
         }
 
@@ -145,17 +138,13 @@ namespace ATHMovil.Purchase.Model
             get => _publictoken;
             set
             {
-                if (SDKGlobal.Instance().Flow.Equals("Yes"))
+                if (string.IsNullOrEmpty(value))
                 {
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        _publictoken = string.Empty;
-                        return;
-                    }
-                    _publictoken = value.Trim();
+                    _publictoken = string.Empty;
                     return;
                 }
-                _publictoken = string.Empty;
+                _publictoken = value.Trim();
+                return;
             }
         }
 
@@ -181,17 +170,13 @@ namespace ATHMovil.Purchase.Model
             get => _env;
             set
             {
-                if (SDKGlobal.Instance().Flow.Equals("Yes"))
+                if (string.IsNullOrEmpty(value))
                 {
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        _env = string.Empty;
-                        return;
-                    }
-                    _env = value.Trim();
+                    _env = string.Empty;
                     return;
                 }
-                _env = string.Empty;
+                _env = value.Trim();
+                return;
             }
         }
 
@@ -254,11 +239,7 @@ namespace ATHMovil.Purchase.Model
 
             string genericMensagge = StringMensaje.GetGenericErrorMessage();
 
-            if (SDKGlobal.Instance().Flow.Equals("Yes")){
-                return genericMensagge;
-            }else{
-                return message;
-            }
+            return genericMensagge;
         }
         
         public Purchase(double total)

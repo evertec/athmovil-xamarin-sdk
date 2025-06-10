@@ -18,7 +18,6 @@ namespace NuevoCheckout.Views
             InitializeComponent();
 
             PickerEnviroment.SelectedItem = global.Environment;
-            PickerFlow.SelectedItem = global.Flow;
             PickerTheme.SelectedItem = global.Theme;
         }
 

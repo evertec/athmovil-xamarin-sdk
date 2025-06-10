@@ -23,11 +23,10 @@ namespace ATHMovil.Purchase.Encoders
 
             string strJson = "";
 
-            if (SDKGlobal.Instance().Flow.Equals("Yes") && !request.Business.PublicToken.ToLower().Equals("dummy")){
+            if (!request.Business.PublicToken.ToLower().Equals("dummy")){
                 PurchaseBodySecure purchaseCodable = new PurchaseBodySecure(request);
                 strJson = JsonConvert.SerializeObject(purchaseCodable, jsonSettings);
-            }
-            else {
+            }else {
                 PurchaseBody purchaseCodable = new PurchaseBody(request);
                 strJson = JsonConvert.SerializeObject(purchaseCodable, jsonSettings);
             }

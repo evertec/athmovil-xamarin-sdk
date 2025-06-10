@@ -56,12 +56,9 @@ namespace ATHMovil.Purchase.Model.Manager
 
                 if (value != null)
                 {
-                    if (!SDKGlobal.Instance().Flow.Equals("Yes"))
-                    {
-                        //Task.Delay(100);
-                        if (isRequestWithData == false) {
-                            ObserveOnResume();
-                        }
+                    //Task.Delay(100);
+                    if (isRequestWithData == false) {
+                        ObserveOnResume();
                     }
                 }
             }

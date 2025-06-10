@@ -24,19 +24,7 @@ namespace NuevoCheckout.ViewModels
                 return new ObservableCollection<string>(listEnvi);
             }
         }
-
-        public ObservableCollection<string> GetListFlow
-        {
-            get
-            {
-                List<string> listEnvi = new List<string> {
-                    "Yes",
-                    "No"
-                };
-                return new ObservableCollection<string>(listEnvi);
-            }
-        }
-
+        
         public ObservableCollection<string> GetListTheme
         {
             get
@@ -79,27 +67,6 @@ namespace NuevoCheckout.ViewModels
                 Global.Instance().Environment = value;
                 GlobalStorage.ShareInstance.Value.SelectedEnviroment = value;
             } 
-        }
-
-        public string SelectedFlow
-        {
-            get => Global.Instance().Flow;
-            set
-            {
-                if (value == null)
-                {
-                    return;
-                }
-
-                Global.Instance().Flow = value;
-                GlobalStorage.ShareInstance.Value.SelectedFlow = value;
-
-                if (value.Equals("Yes")){
-                    LabelVisible = true;
-                }else {
-                    LabelVisible = false;
-                }
-            }
         }
 
         public string Token
@@ -180,18 +147,6 @@ namespace NuevoCheckout.ViewModels
             {
                 Global.Instance().Phone = value;
                 GlobalStorage.ShareInstance.Value.Phone = value;
-            }
-        }
-
-        private bool _labelVisible;
-
-        public bool LabelVisible
-        {
-            get { return _labelVisible; }
-            set
-            {
-                _labelVisible = value;
-                OnPropertyChanged(nameof(LabelVisible));
             }
         }
 

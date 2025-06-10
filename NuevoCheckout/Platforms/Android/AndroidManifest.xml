@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.companyname.testapp" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="34" />
 	<application android:allowBackup="true" android:icon="@mipmap/icon_round" android:supportsRtl="true" android:label="NuevoCheckout">
-		<activity android:name="com.companyname.testapp.ResponseActivity">
+		<activity android:name="com.companyname.testapp.ResponseActivity" android:exported="true">
 			<intent-filter>
 				<action android:name="com.companyname.testapp.test-app" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -13,7 +13,5 @@
 	<uses-permission android:name="android.permission.INTERNET" />
 	<queries>
 		<package android:name="com.evertec.athmovil.android" />
-		<package android:name="com.evertec.athmovil.android.qa" />
-		<package android:name="com.evertec.athmovil.android.piloto" />
 	</queries>
 </manifest>

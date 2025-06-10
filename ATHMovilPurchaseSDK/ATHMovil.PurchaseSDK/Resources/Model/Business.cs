@@ -39,13 +39,7 @@ namespace ATHMovil.Purchase.Model
                 
                 if (string.IsNullOrEmpty(PublicToken))
                 {
-                    if (SDKGlobal.Instance().Flow.Equals("Yes")){
-                        return PurchaseException.Request(StringMensaje.GetGenericErrorMessage());
-                    }
-                    else {
-                        return PurchaseException.Request(StringMensaje.GetGenericErrorMessageOldFlow());
-                    }
-                        
+                    return PurchaseException.Request(StringMensaje.GetGenericErrorMessage());   
                 }
                 return null;
             }
