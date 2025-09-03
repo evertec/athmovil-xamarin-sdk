@@ -126,25 +126,6 @@
                     ItemsSource="{Binding GetListEnviroment}">
             </Picker>
             <Label Grid.Column="0"
-                    Grid.Row="5"
-                    Text="New Flow?"
-                    FontSize="Medium"
-                    TextColor="Black"
-                    VerticalTextAlignment="Center"/>
-            <Picker x:Name="PickerFlow"
-                    Grid.Column="1"
-                    Grid.Row="5"
-                    Title="Flow"
-                    TitleColor="Black"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    FontSize="Medium"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="End"
-                    SelectedItem="{Binding SelectedFlow}"
-                    ItemsSource="{Binding GetListFlow}">
-            </Picker>
-            <Label Grid.Column="0"
                     Grid.Row="6"
                     Text="Subtotal"
                     FontSize="Medium"

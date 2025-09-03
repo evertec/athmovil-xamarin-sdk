@@ -45,21 +45,25 @@ namespace ATHMovil.Purchase.Utils
 
             _isBusy = true;
         }
-
-        public async Task<AuthorizationResponse> AuthorizationServicesCall()
+        
+        public async Task<PurchaseResponse> AuthorizationServicesCall(PurchaseResponse responsePurchase)
         {
-            return await CallApi();
+            return await CallApi(responsePurchase);
         }
 
-        private void OnIsBusyChanged(){
-            if (IsBusy){
+        private void OnIsBusyChanged()
+        {
+            if (IsBusy)
+            {
                 LoadingView.ShowLoadingOverlay();
-            }else{
+            }
+            else
+            {
                 LoadingView.HideLoadingOverlay();
             }
         }
 
-        internal async Task<AuthorizationResponse> CallApi()
+        internal async Task<PurchaseResponse> CallApi(PurchaseResponse responsePurchase)
         {
             if (SDKGlobal.Instance().Token == null) {
                 IsBusy = false;
@@ -83,11 +87,18 @@ namespace ATHMovil.Purchase.Utils
                     {
                         var content = await response.Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<AuthorizationResponse>(content);
-                        return result;
+
+                        responsePurchase.Info.DailyTransactionID = result.Data.DailyTransactionId != null ? int.Parse(result.Data.DailyTransactionId) : 0;
+                        responsePurchase.Info.ReferenceNumber = result.Data.ReferenceNumber != null ? result.Data.ReferenceNumber : "";
+                        responsePurchase.Purchase.NetAmount = result.Data.NetAmount != 0 ? result.Data.NetAmount : 0.0;
+                        responsePurchase.Purchase.Fee = result.Data.Fee != 0 ? result.Data.Fee : 0.0;
+
+                        return responsePurchase;
                     }
                     else
                     {
-                        return null;
+                        responsePurchase.Info.Status = PurchaseState.failed;
+                        return responsePurchase;
                     }
                 }
             }

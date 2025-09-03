@@ -9,7 +9,7 @@ namespace NuevoCheckout.Views
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS)
+            if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS)
             {
                 this.BackgroundColor = Color.FromRgba(149, 145, 144, 1);
             }

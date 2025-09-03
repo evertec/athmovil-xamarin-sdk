@@ -9,9 +9,8 @@ using NuevoCheckout.Models;
 
 namespace NuevoCheckout.ViewModels
 {
-    public class PopUpViewModel : INotifyPropertyChanged
+    public class PopUpViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private string name = "";
         private double price = 0.0;
         private string description = "";

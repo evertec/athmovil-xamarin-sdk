@@ -28,12 +28,6 @@ namespace NuevoCheckout.Models
             set => Preferences.Set("Enviroment", value);
         }
 
-        public string SelectedFlow
-        {
-            get => Preferences.Get("Flow", "Yes");
-            set => Preferences.Set("Flow", value);
-        }
-
         public string Token
         {
             get => Preferences.Get("Token", "Dummy");

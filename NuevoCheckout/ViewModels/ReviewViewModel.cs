@@ -11,9 +11,8 @@ using System;
 
 namespace NuevoCheckout.ViewModels
 {
-    public class ReviewViewModel : INotifyPropertyChanged
+    public class ReviewViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public Command OnPayATHMovil { get; set; }
         public INavigation Navigation { get; set; }
@@ -41,7 +40,7 @@ namespace NuevoCheckout.ViewModels
 
                 PurchaseHandler handler = new(OnResponseCompleted, OnResponseCancelled, OnResponseExpired, OnException);
 
-                PurchaseRequest request = new(purchase, publicToken, callback, Global.Instance().Flow);
+                PurchaseRequest request = new(purchase, publicToken, callback);
                 request.Pay(handler, global.Timeout);
             });
         }
@@ -73,24 +72,11 @@ namespace NuevoCheckout.ViewModels
 
             await Task.Delay(1000);
 
-            if (Global.Instance().Flow.Equals("Yes") && !Global.Instance().Token.ToLower().Equals("dummy"))
-            {
+            if (!Global.Instance().Token.ToLower().Equals("dummy")){
                 AuthorizationServices service = new AuthorizationServices();
-                AuthorizationResponse authorizationObject = await service.AuthorizationServicesCall();
-                if (authorizationObject != null)
-                {
-                    response.Info.DailyTransactionID = authorizationObject.Data.DailyTransactionId != null ? int.Parse(authorizationObject.Data.DailyTransactionId) : 0;
-                    response.Info.ReferenceNumber = authorizationObject.Data.ReferenceNumber != null ? authorizationObject.Data.ReferenceNumber : "";
-                    response.Purchase.NetAmount = authorizationObject.Data.NetAmount != 0 ? authorizationObject.Data.NetAmount : 0.0;
-                    response.Purchase.Fee = authorizationObject.Data.Fee != 0 ? authorizationObject.Data.Fee : 0.0;
-                }
-                else {
-                    response.Info.Status = PurchaseState.failed;
-                }
-
-                _ = ShowConfirmationPageAsync(response);
-            }
-            else {
+                PurchaseResponse authorizationObject = await service.AuthorizationServicesCall(response);
+                _ = ShowConfirmationPageAsync(authorizationObject);
+            }else{
                 _ = ShowConfirmationPageAsync(response);
             }
         }

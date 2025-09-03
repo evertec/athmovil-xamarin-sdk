@@ -28,15 +28,7 @@ namespace ATHMovil.Purchase.Extension
 
         internal static bool IsBetween(this double target, double min, double max)
         {
-            if (SDKGlobal.Instance().Flow.Equals("Yes")){
-                return true;
-            }else{
-                if (target >= min && target <= max)
-                {
-                    return true;
-                }
-                return false;
-            }
+            return true;
         }
     }
 
@@ -106,11 +98,9 @@ namespace ATHMovil.Purchase.Extension
             return new Uri("https://www.athmovil.com");
         }
 
-        internal static string GetAWSDomain(this ATHMovilTarget currentEnviroment)
+       internal static string GetAWSDomain(this ATHMovilTarget currentEnviroment)
         {
-            
             return "payments.athmovil.com";
-            
         }
     }
 }

@@ -81,7 +81,7 @@ namespace NuevoCheckout.ViewModels
                 ReviewCells.Add(new ReviewCell() { Title = "Reference Number", SubTitle = info.ReferenceNumber });
                 ReviewCells.Add(new ReviewCell() { Title = "Daily Transaction ID", SubTitle = $"{info.DailyTransactionID}" });
             }
-            catch (Exception e) {
+            catch (Exception) {
                 Application.Current.MainPage.DisplayAlert("Error", "No se pudo cargar los datos de la transacción", "OK", FlowDirection.MatchParent);
             }
             
@@ -99,7 +99,7 @@ namespace NuevoCheckout.ViewModels
                 ReviewCells.Add(new ReviewCell() { Title = "Phone Number", SubTitle = user.Telephone });
                 ReviewCells.Add(new ReviewCell() { Title = "Email", SubTitle = user.Email });
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Application.Current.MainPage.DisplayAlert("Error", "No se pudo cargar los datos del usuario", "OK", FlowDirection.MatchParent);
             }
@@ -126,7 +126,7 @@ namespace NuevoCheckout.ViewModels
                 ReviewCells.Add(new ReviewCell() { Title = "Metadata2", SubTitle = $"{purchase.Metadata2}" });
                 ReviewCells.Add(new ReviewCell() { Title = "Items", SubTitle = $"Total: {purchase.Items.Count}", IsVisible = hasItems, TypeCell = ReviewCellType.items });
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Application.Current.MainPage.DisplayAlert("Error", "No se pudo cargar los datos de la compra", "OK", FlowDirection.MatchParent);
             } 

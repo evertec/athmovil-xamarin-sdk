@@ -35,12 +35,7 @@ namespace ATHMovil.Purchase.Model
 
                 if (Purchase == null)
                 {
-                    
-                    if (SDKGlobal.Instance().Flow.Equals("Yes")){
-                        return PurchaseException.Request(StringMensaje.GetGenericErrorMessage());
-                    }else{
-                        return PurchaseException.Request("You should provide a Purchase object");
-                    }
+                    return PurchaseException.Request(StringMensaje.GetGenericErrorMessage());
                 }
 
                 PurchaseException? purchaseError = Purchase.IsSatisfy;
@@ -69,8 +64,7 @@ namespace ATHMovil.Purchase.Model
         public PurchaseRequest(
             Purchase purchase,
             Business token,
-            UriCallBack scheme,
-            String flow)
+            UriCallBack scheme)
         {
             Purchase = purchase;
             Business = token;
@@ -78,11 +72,6 @@ namespace ATHMovil.Purchase.Model
             TimeOut = DefaultValues.MaxTimeOut;
             Handler = null;
             PaymentId = Guid.NewGuid();
-
-            if (flow.Equals("")) {
-                SDKGlobal.Instance().Flow = "Yes";
-            }
-            SDKGlobal.Instance().Flow = flow;
         }
 
         public void Pay(PurchaseHandler handler) 
@@ -109,7 +98,7 @@ namespace ATHMovil.Purchase.Model
 
             Handler = handler;
 
-            if (SDKGlobal.Instance().Flow.Equals("Yes") && !Business.PublicToken.ToLower().Equals("dummy")){
+            if (!Business.PublicToken.ToLower().Equals("dummy")){
 
                 SDKGlobal.Instance().PublicToken = this.Business.PublicToken;
                 this.Purchase.PublicToken = this.Business.PublicToken;

@@ -12,7 +12,7 @@ namespace ATHMovil.Purchase.Model
 
         internal static PurchaseException Request(string description)
         {
-            string title = SDKGlobal.Instance().Flow.Equals("Yes") ? StringMensaje.GetGenericErrorTitle() : "ATH Móvil";
+            string title =  StringMensaje.GetGenericErrorTitle();
             return new PurchaseException()
             {
                 FailureReason = title,
@@ -23,7 +23,7 @@ namespace ATHMovil.Purchase.Model
 
         internal static PurchaseException Response(string description)
         {
-            string title = SDKGlobal.Instance().Flow.Equals("Yes") ? StringMensaje.GetGenericErrorTitle() : "ATH Móvil";
+            string title = StringMensaje.GetGenericErrorTitle();
             return new PurchaseException()
             {
                 FailureReason = title,

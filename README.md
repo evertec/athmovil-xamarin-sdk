@@ -41,10 +41,10 @@ If you need help signing up, adding a card or have any other question please ref
 
 ATH Movil SDK works for Android and iOS so you can add it to your project as local Package Sources. This repository containts the compiled package so avoid compile the project. In order to do that you should follow the next steps:
 
-* The new version of the xamarin SDK has been migrated to xamarin maui, which makes use of the net-6.0 libraries for android and ios.
+* The new version of the xamarin SDK has been migrated to xamarin maui, which makes use of the net-8.0 libraries for android and ios.
 * Into the repository find the file named **ATHMovil.PurchaseSDK** this file containts the compiled package of ATH Movil SKD. Download the file **ATHMovil.PurchaseSDK**.
 * Open your project and navigate to Visual Studio > Preferences > NuGet > Sources, this option will show you the remote and local packages that are configured in your computer.
-* Then click add button, the next window will required some information such as name, for the name you might set **ATHMovil SDK**, for the Location select the location of the file **ATHMovil.PurchaseSDK.1.0.0.nupkg**. After this the local source package has been configured and imported to Visual Studio.
+* Then click add button, the next window will required some information such as name, for the name you might set **ATHMovil SDK**, for the Location select the location of the file **ATHMovil.PurchaseSDK.5.0.0.nupkg**. After this the local source package has been configured and imported to Visual Studio.
 * Now you should add the ATH Movil Package to your project as dependencie, in order to do that, in your project right click on dependencies and select Manage NutGet Packages, in the next window look for the option Package Source and select ATHMovil SDK, then you will see the package **ATHMovil.PurchaseSDK**.
 * Select the option latest version and press the button Add Package.
 * Now you must see the references of ATH Movil SDK in your project, it should be configured for Android or iOS then you can move to the next section Configuration.
@@ -260,7 +260,6 @@ OnPayATHMovil = new Command(() =>
             { 
                 Business publicToken = new Business(“here set your public token or dummy word for testing”);
                 UriCallBack callback = new UriCallBack("here your URL Scheme or Action Name");
-                String NewFlow = “Yes”;
                 
                 Purchase purchase = new Purchase(1.0)
                 {
@@ -274,10 +273,9 @@ OnPayATHMovil = new Command(() =>
 
                 PurchaseHandler handler = new(OnResponseCompleted, OnResponseCancelled, OnResponseExpired, OnException);
 
-                PurchaseRequest request = new(purchase, publicToken, callback, NewFlow);
+                PurchaseRequest request = new(purchase, publicToken, callback);
                 request.Pay(handler, global.Timeout);
             });
-/// In PurchaseRequest, the NewFlow field refers to the new payment method. this field can be a String YES or NO
 /// 👆 After Pay method your application would open ATH Movil Personal. 
 /// This method is overloaded you can send a timeout, by default is 600 seconds (ten minutes)
 
@@ -290,7 +288,6 @@ OnPayATHMovil = new Command(() =>
 | UriCallBack | Defines the call back for your app, the value should be the Action Name for Android and URL Scheme for iOS. You can define the same value for Action Name and URL Scheme |
 | Purchase | Defines the purchase total, this is the amount that ATH Movil Application will withdraw of the user. |
 | PurchaseHandler | In this object you define the methods or callback, those methods will receive the response object from the payment. You would receive completed, cancelled, failed  or expired payment. If you received OnException means a error in the SDK or invalid input valid |
-| PurchaseRequest | In this object you establish if you want to use the new payment version by a string stating YES or NO |
 
 
 The following optional properties can be used to add additional information to the payment:
@@ -311,12 +308,12 @@ The following optional properties can be used to add additional information to t
 
   | Variable  | Data Type | Required | Description |
   | ------------- |:-------------:|:-----:| ------------- |
-  | `Subtotal` | double | No | Optional  variable to display the payment subtotal (if applicable) |
-  | `Tax` | double | No | Optional variable to display the payment tax (if applicable). |
-  | `Metadata1` | string | No | Optional variable to attach data to the payment object. Max length 40 characters. |
-  | `Metadata2` | string | No | Optional variable to attach data to the payment object. Max length 40 characters. |
-  | `Items` | List<PurchaseItem> | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
-  | `PhoneNumber` | String | No | Optional variable to send the customer's phone number. |
+  | `Subtotal`      | double | No | Optional  variable to display the payment subtotal (if applicable) |
+  | `Tax`           | double | No | Optional variable to display the payment tax (if applicable). |
+  | `Metadata1`     | string | No | Optional variable to attach data to the payment object. Max length 40 characters. |
+  | `Metadata2`     | string | No | Optional variable to attach data to the payment object. Max length 40 characters. |
+  | `Items`         | List<PurchaseItem> | No | Optional variable to display the items that the user is purchasing on ATH Móvil's payment summary screen. |
+  | `PhoneNumber`   | String | No | Optional variable to send the customer's phone number. |
 
 **Items Array**
 
@@ -324,11 +321,11 @@ For items properties there is a class named PurchaseItem, you can use it to fill
 
   | Variable  | Data Type | Required | Description |
   | ------------- |:-------------:|:-----:| ------------- |
-  | `Name` | string | Yes | Name of item. |
-  | `Price` | double | Yes | Price of individual item. |
-  | `Quantity` | int | Yes | Quantity of individual item. |
+  | `Name`      | string | Yes | Name of item. |
+  | `Price`     | double | Yes | Price of individual item. |
+  | `Quantity`  | int | Yes | Quantity of individual item. |
   | `Description` | string | No | Brief description of the item. |
-  | `Metadata` | string | No | Optional variable to attach data to the item object. |
+  | `Metadata`  | string | No | Optional variable to attach data to the item object. |
   
   
 As you notice in the PurchaseHandler you set a methods of your view model. Those methods are receiving a parameter of  PurchaseResponse type. The following table describe the properties for this object.
@@ -386,34 +383,19 @@ If unexpected data is sent on the request of the payment the SDK will call the c
     error.IsRequestError ///True if the error is in input data.
 ```
 
-If the new payment flow has been chosen, the Authorization service must be consumed after receiving the successful response from the ATH Móvil app. To do the above, you need to implement the following code:
-
 ```csharp
 
-private async void getServiceAuthorization(PurchaseResponse response) {
+ private async void getServiceAuthorization(PurchaseResponse response) {
 
     this.response = response;
 
     await Task.Delay(1000);
 
-    if (Global.Instance().Flow.Equals("Yes") && !Global.Instance().Token.ToLower().Equals("dummy"))
-    {
+    if (!Global.Instance().Token.ToLower().Equals("dummy")){
         AuthorizationServices service = new AuthorizationServices();
-        AuthorizationResponse authorizationObject = await service.AuthorizationServicesCall();
-        if (authorizationObject != null)
-        {
-            response.Info.DailyTransactionID = int.Parse(authorizationObject.Data.DailyTransactionId);
-            response.Info.ReferenceNumber = authorizationObject.Data.ReferenceNumber;
-            response.Purchase.NetAmount = authorizationObject.Data.NetAmount;
-            response.Purchase.Fee = authorizationObject.Data.Fee;
-        }
-        else {
-            response.Info.Status = PurchaseState.failed;
-        }
-
-        _ = ShowConfirmationPageAsync(response);
-    }
-    else {
+        PurchaseResponse authorizationObject = await service.AuthorizationServicesCall(response);
+        _ = ShowConfirmationPageAsync(authorizationObject);
+    }else{
         _ = ShowConfirmationPageAsync(response);
     }
 }

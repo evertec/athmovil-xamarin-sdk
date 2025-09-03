@@ -16,7 +16,6 @@ namespace NuevoCheckout.Models
         public int Timeout { get; set; }
         public string Theme { get; set; }
         public string Environment { get; set; }
-        public string Flow { get; set; }
 
         public List<PurchaseItem> Items { get; set; }
 
@@ -40,7 +39,6 @@ namespace NuevoCheckout.Models
                 _instance.Timeout = GlobalStorage.ShareInstance.Value.TimeOut;
                 _instance.Theme = GlobalStorage.ShareInstance.Value.SelectedTheme; 
                 _instance.Environment = GlobalStorage.ShareInstance.Value.SelectedEnviroment;
-                _instance.Flow = GlobalStorage.ShareInstance.Value.SelectedFlow;
                 _instance.Total = GlobalStorage.ShareInstance.Value.Total; 
                 _instance.SubtTotal = GlobalStorage.ShareInstance.Value.SubTotal;
                 _instance.Tax = GlobalStorage.ShareInstance.Value.Tax;

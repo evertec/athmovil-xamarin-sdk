@@ -1,10 +1,10 @@
 ﻿<ContentPage
-        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        x:Class="NuevoCheckout.Views.CartPage"
-        xmlns:viewmodels="clr-namespace:NuevoCheckout.ViewModels"
-        xmlns:cv="clr-namespace:NuevoCheckout.Converters"
-        Title="Items">
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="NuevoCheckout.Views.CartPage"
+    xmlns:viewmodels="clr-namespace:NuevoCheckout.ViewModels"
+    xmlns:cv="clr-namespace:NuevoCheckout.Converters"
+    Title="Items">
 
     <ContentPage.BindingContext>
         <viewmodels:CartViewModel/>
@@ -22,89 +22,87 @@
         <ToolbarItem IconImageSource="icon_settings" Clicked="OnSettingsClicked"/>
     </ContentPage.ToolbarItems>
 
-    <ScrollView>
-        <StackLayout
-            Orientation="Vertical"
-            BackgroundColor="White">
+    <!-- Nuevo layout principal -->
+    <Grid RowDefinitions="*,Auto" BackgroundColor="White">
         
-            <CollectionView HeightRequest="500" ItemsSource="{Binding CartList}" SelectionMode="None" Margin="0">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                    
-                        <Grid Padding="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6*" />
-                                <ColumnDefinition Width="4*" />
-                            </Grid.ColumnDefinitions>
+        <!-- Parte desplazable -->
+        <ScrollView Grid.Row="0">
+            <StackLayout Orientation="Vertical">
+                <CollectionView ItemsSource="{Binding CartList}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding Name}"
-                                    Grid.Column="0"
-                                    Grid.Row="0"
-                                    TextColor="Black"/>
-                            
-                            <Label Text="{Binding Price, Converter={StaticResource priceConverter}}"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    TextColor="Black"
-                                    HorizontalTextAlignment="End"
-                                    HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding Name}"
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       TextColor="Black" />
 
-                            
-                            <Label Text="{Binding Description}"
-                                    Grid.Column="0"
-                                    Grid.Row="1"
-                                    TextColor="Black"/>
+                                <Label Text="{Binding Price, Converter={StaticResource priceConverter}}"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="End"
+                                       HorizontalOptions="FillAndExpand" />
 
-                            
-                            <Label Text="{Binding Quantity, Converter={StaticResource quantityConverter}}"
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    TextColor="Black"
-                                    HorizontalTextAlignment="End"
-                                    HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding Description}"
+                                       Grid.Column="0"
+                                       Grid.Row="1"
+                                       TextColor="Black" />
 
-                            
-                            <Label Text="{Binding Metadata}"
-                                    Grid.ColumnSpan="2"
-                                    Grid.Row="2"
-                                    TextColor="Black"/>
-                        </Grid>
-                    
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                <Label Text="{Binding Quantity, Converter={StaticResource quantityConverter}}"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="End"
+                                       HorizontalOptions="FillAndExpand" />
 
-
-            <StackLayout Orientation="Vertical"
-                            Padding="30,0,30,24"
-                            VerticalOptions="Center"
-                            BackgroundColor="White">
-                <Button Margin="0,10,0,0"
-                        Text="ADD DEFAULT ITEM"
-                        BackgroundColor="Black"
-                        TextColor="White"
-                        Command= "{Binding AddDefaultButtonCommand}"/>
-                <Button Margin="0,10,0,0" Text="ADD CUSTOM ITEM"
-                        BackgroundColor="Black"
-                        TextColor="White"
-                        Clicked="OnCustomItemButtonClickedAsync"
-                        />
-                <Button Margin="0,10,0,0"
-                        Text="CLEAR CART"
-                        BackgroundColor="Black"
-                        TextColor="White"
-                        Command= "{Binding DeleteCommand}"/>
-                <Button Margin="0,10,0,0" Text="GO TO CART"
-                        BackgroundColor="Black"
-                        TextColor="White"
-                        Clicked="OnGoToCart"/>
+                                <Label Text="{Binding Metadata}"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="2"
+                                       TextColor="Black" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
-        
+        </ScrollView>
+
+        <!-- Parte inferior fija -->
+        <StackLayout Grid.Row="1"
+                     Orientation="Vertical"
+                     Padding="30,0,30,24"
+                     BackgroundColor="White">
+            <Button Margin="0,10,0,0"
+                    Text="ADD DEFAULT ITEM"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Command="{Binding AddDefaultButtonCommand}" />
+            <Button Margin="0,10,0,0"
+                    Text="ADD CUSTOM ITEM"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Clicked="OnCustomItemButtonClickedAsync" />
+            <Button Margin="0,10,0,0"
+                    Text="CLEAR CART"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Command="{Binding DeleteCommand}" />
+            <Button Margin="0,10,0,0"
+                    Text="GO TO CART"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    Clicked="OnGoToCart" />
         </StackLayout>
-    </ScrollView>
+
+    </Grid>
 </ContentPage>

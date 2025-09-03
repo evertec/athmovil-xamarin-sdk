@@ -20,14 +20,7 @@ namespace NuevoCheckout.Views
             metadata2.Text = global.Metadata2;
             items.Text = $"{ global.Items.Count }";
 
-            if (global.Flow.Equals("Yes"))
-            {
-                phone.Text = $"{global.Phone}";
-                lblPhone.IsVisible = true;
-                phone.IsVisible = true;
-            }else {
-                global.Phone = string.Empty;
-            }
+            phone.Text = $"{global.Phone}";
 
             PaymentButton.Theme = (Theme)Enum.Parse(typeof(Theme), global.Theme);
         }

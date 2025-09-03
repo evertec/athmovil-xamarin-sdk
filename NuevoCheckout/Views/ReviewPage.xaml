@@ -11,12 +11,19 @@
         <vm:ReviewViewModel/>
     </ContentPage.BindingContext>
 
-    <ContentPage.Content>
-        <StackLayout
+    <Grid RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Contenido -->
+        <ScrollView Grid.Row="0">
+            <StackLayout
             BackgroundColor="White"
             VerticalOptions="FillAndExpand"
             Orientation="Vertical"
-            Margin="30,0,30,0">
+            Margin="30,20,30,0">
             <Grid BackgroundColor="White" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                 <RowDefinition Height="10*" />
@@ -155,16 +162,14 @@
                        FontSize="Medium"
                        TextColor="Black"
                        VerticalTextAlignment="Center"
-                       HorizontalTextAlignment="Start"
-                       IsVisible="false"/>
+                       HorizontalTextAlignment="Start"/>
                 <Label Grid.Column="1"
                        Grid.Row="8"
                        x:Name="phone"
                        FontSize="Medium"
                        TextColor="Black"
                        VerticalTextAlignment="Center"
-                       HorizontalTextAlignment="End"
-                       IsVisible="false"/>
+                       HorizontalTextAlignment="End"/>
 
                 <Label Grid.Column="1"
                        Grid.Row="9"
@@ -175,14 +180,20 @@
                        HeightRequest="100"/>
                 
             </Grid>
-           
+
+        	</StackLayout>
+        </ScrollView>
+
+        <!-- Botón de ATH Móvil al fondo -->
+        <StackLayout Grid.Row="1" Padding="20,10,20,20" BackgroundColor="White">
             <btn1:ATHMButton
                 x:Name="PaymentButton"
                 Theme="Light"
                 Language="English"
                 WidthRequest="400"
-                Command="{Binding OnPayATHMovil}"/> 
-
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Command="{Binding OnPayATHMovil}" />
         </StackLayout>
-    </ContentPage.Content>
+    </Grid>
 </ContentPage>

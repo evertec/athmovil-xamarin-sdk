@@ -6,9 +6,8 @@ using ATHMovil.Purchase.Model;
 
 namespace NuevoCheckout.ViewModels
 {
-    public class ConfirmationItemsViewModel : INotifyPropertyChanged
+    public class ConfirmationItemsViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<PurchaseItem> Items { get; set; }
 
         public ConfirmationItemsViewModel()
