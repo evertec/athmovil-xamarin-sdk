@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Text;
 using ATHMovil.Purchase.Storage;
 using ATHMovil.Purchase.Model;
@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace ATHMovil.Purchase.Utils
 {
-    public class AuthorizationServices : BindableObject
+    public class FindPaymentServices : BindableObject
     {
 
         public Command CallApiCommand { get; set; }
@@ -34,9 +34,7 @@ namespace ATHMovil.Purchase.Utils
             }
         }
 
-        FindPaymentServices findPaymentService = new FindPaymentServices();
-
-        public AuthorizationServices()
+        public FindPaymentServices()
         {
             var httpClientHandler = new HttpClientHandler();
 
@@ -49,7 +47,7 @@ namespace ATHMovil.Purchase.Utils
             _isBusy = true;
         }
         
-        public async Task<PurchaseResponse> AuthorizationServicesCall(PurchaseResponse responsePurchase)
+        public async Task<PurchaseResponse> FindPaymentServicesCall(PurchaseResponse responsePurchase)
         {
             return await CallApi(responsePurchase);
         }
@@ -77,21 +75,26 @@ namespace ATHMovil.Purchase.Utils
 
             try
             {
-                HttpContent callContent = new StringContent(String.Empty, Encoding.UTF8, "application/json");
+                var request = new FindPaymentRequest{
+                    ecommerceId = SDKGlobal.Instance().EcommerceID,
+                    publicToken = SDKGlobal.Instance().PublicToken
+                };
+                string json = JsonConvert.SerializeObject(request);
+                Console.WriteLine($"Datos de find payment: {json}");
+                HttpContent callContent = new StringContent(json, Encoding.UTF8, "application/json");
 
                 using (HttpClient client = new HttpClient())
                 {
                     // Agregar la cabecera "Host"
                     client.DefaultRequestHeaders.Add("Host", Host);
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + SDKGlobal.Instance().Token);
-                    String url = "https://" + Host + "/api/business-transaction/ecommerce/authorization";
+                    String url = "https://" + Host + "/api/business-transaction/ecommerce/business/findPayment";
                     HttpResponseMessage response = await client.PostAsync(url, callContent);
 
                     printDebug(url, response, await response.Content.ReadAsStringAsync());
 
                     if (response.IsSuccessStatusCode)
                     {
-                        IsBusy = false;
                         var content = await response.Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<AuthorizationResponse>(content);
 
@@ -104,15 +107,15 @@ namespace ATHMovil.Purchase.Utils
                     }
                     else
                     {
-                        IsBusy = false;
-                        return await findPaymentService.FindPaymentServicesCall(responsePurchase);
+                        responsePurchase.Info.Status = PurchaseState.failed;
+                        return responsePurchase;
                     }
                 }
             }
             catch (System.Exception ex)
             {
                 IsBusy = false;
-                return await findPaymentService.FindPaymentServicesCall(responsePurchase);
+                return null;
             }
             finally
             {

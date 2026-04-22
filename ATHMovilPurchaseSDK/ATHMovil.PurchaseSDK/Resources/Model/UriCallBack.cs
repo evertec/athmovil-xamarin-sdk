@@ -2,7 +2,6 @@
 {
     public enum ATHMovilTarget
     {
-        Pilot,
         Production
     }
 

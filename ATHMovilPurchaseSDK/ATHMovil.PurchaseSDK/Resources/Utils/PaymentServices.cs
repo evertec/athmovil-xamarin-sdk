@@ -76,14 +76,18 @@ namespace ATHMovil.Purchase.Utils
                 {
                     // Agregar la cabecera "Host"
                     client.DefaultRequestHeaders.Add("Host", Host);
-                    HttpResponseMessage response = await client.PostAsync("https://"+ Host + "/api/business-transaction/ecommerce/payment", callContent);
+                    String url = "https://" + Host + "/api/business-transaction/ecommerce/payment";
+                    HttpResponseMessage response = await client.PostAsync(url, callContent);
                 
+                    printDebug(url, response, await response.Content.ReadAsStringAsync());
+
                     if (response.IsSuccessStatusCode){
                         var content = await response.Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<PaymentResponseModel>(content);
                         if (!string.IsNullOrEmpty(result.getData().getEcommerce()) && !string.IsNullOrEmpty(result.getData().getToken())){
                             SDKGlobal.Instance().EcommerceID = result.getData().getEcommerce();
                             SDKGlobal.Instance().Token = result.getData().getToken();
+                            SDKGlobal.Instance().PublicToken = request.Business.PublicToken;
                              
                              NewRelicConfig.SendEventToNewRelic(
                                 eventType: NewRelicConstants.NR.INIT_PAYMENT_SUCCESS,
@@ -139,6 +143,16 @@ namespace ATHMovil.Purchase.Utils
         }
 
 
+        public void printDebug(String url, HttpResponseMessage response, string responseBody)
+        {
+            #if DEBUG
+                Console.WriteLine("========== HTTP DEBUG ==========");
+                Console.WriteLine($"URL: {url}");
+                Console.WriteLine($"Status Code: {(int)response.StatusCode} - {response.StatusCode}");
+                Console.WriteLine($"Response: {responseBody}");
+                Console.WriteLine("================================");
+            #endif
+        }
 
          private string GetBuildType()
         {
