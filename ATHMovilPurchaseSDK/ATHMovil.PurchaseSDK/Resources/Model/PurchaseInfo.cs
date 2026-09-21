@@ -9,6 +9,7 @@ namespace ATHMovil.Purchase.Model
         completed,
         expired,
         failed,
+        success,
     }
 
     public sealed class PurchaseInfo
@@ -28,6 +29,22 @@ namespace ATHMovil.Purchase.Model
             DailyTransactionID = daily;
             TransactionDate = date;
             ReferenceNumber = referenceNumber;
+        }
+
+        public static PurchaseState ParseStatus(string rawStatus)
+        {
+            if (string.IsNullOrWhiteSpace(rawStatus))
+                return PurchaseState.failed;
+
+            return rawStatus.Trim().ToUpperInvariant() switch
+            {
+                "SUCCESS"                => PurchaseState.success,
+                "COMPLETED"              => PurchaseState.completed,
+                "CANCELLED" or "CANCELED" => PurchaseState.cancelled,
+                "EXPIRED"                => PurchaseState.expired,
+                "FAILED"                 => PurchaseState.failed,
+                _                        => PurchaseState.failed
+            };
         }
     }
 }

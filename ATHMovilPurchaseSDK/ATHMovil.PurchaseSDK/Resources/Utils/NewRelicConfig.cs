@@ -52,7 +52,7 @@ namespace ATHMovil.Purchase.Utils
                     sdk_platform = platform,
                     build_type = finalBuildType,
                     payment_status = paymentStatus ?? string.Empty,
-                    sdk_version = AppInfo.Current.VersionString,
+                    sdk_version = "6.1.1", //AppInfo.Current.VersionString,
                     device_os_version = DeviceInfo.VersionString,
                     device_os_model = DeviceInfo.Model
                 };
