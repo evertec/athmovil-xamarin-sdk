@@ -19,7 +19,7 @@ namespace ATHMovil.Purchase.Model.Manager
         internal string CurrentAWSTarget;
         internal ATHMovilTarget targetEnviroment;
         /// <summary>
-        /// ATH Movil enviroment it could be QA, Pilot or Production. For client implementation should be Production
+        /// ATH Movil environment it could be QA, Pilot or Production. For client implementation should be Production
         /// avoid to use QA or Pilot, 
         /// </summary>
         public ATHMovilTarget TargetEnviroment {

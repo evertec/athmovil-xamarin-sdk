@@ -107,7 +107,7 @@ namespace NuevoCheckout.ViewModels
         }
 
         /// <summary>
-        /// Add the purchas info into the observable collection 
+        /// Add the purchase info into the observable collection 
         /// </summary>
         /// <param name="purchase">Purchase info</param>
         private void AddPurchase(Purchase purchase)

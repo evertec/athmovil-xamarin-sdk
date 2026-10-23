@@ -140,7 +140,7 @@ namespace ATHMovil.Purchase.Model
         }
 
         /// <summary>
-        /// Proccess the responseBody that contiants the response JSON
+        /// Process the responseBody that contains the response JSON
         /// </summary>
         /// <param name="responseBody">Current JSON Body</param>
         internal void Paid(string responseBody)
