@@ -237,9 +237,9 @@ namespace ATHMovil.Purchase.Model
 
         public string  getMessageError(string message) {
 
-            string genericMensagge = StringMensaje.GetGenericErrorMessage();
+            string genericMessage = StringMensaje.GetGenericErrorMessage();
 
-            return genericMensagge;
+            return genericMessage;
         }
         
         public Purchase(double total)
